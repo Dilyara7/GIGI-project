@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма консультации по уходу за кожей</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ab6464cd;
+            margin: 0;
+            padding: 0;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #ab6464cd;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            text-align: center;
+            color: #391818;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #f1f1f1;
+        }
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+        input[type="submit"] {
+            background-color: #391818;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        input[type="submit"]:hover {
+            background-color: #ffd900b5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Форма консультации по уходу за кожей</h2>
+    <form action="/scripts/send_email.php" method="post">
+
+
+        <div>
+            <label for="full_name">ФИО</label>
+            <input type="text" id="full_name" name="full_name" placeholder="Введите ваше полное имя" required>
+        </div>
+
+        <div>
+            <label for="age">Возраст</label>
+            <input type="number" id="age" name="age" placeholder="Введите ваш возраст" required>
+        </div>
+
+        <div>
+            <label for="skin_type">Тип кожи</label>
+            <select id="skin_type" name="skin_type" required>
+                <option value="">Выберите ваш тип кожи</option>
+                <option value="normal">Нормальная</option>
+                <option value="dry">Сухая</option>
+                <option value="oily">Жирная</option>
+                <option value="combination">Комбинированная</option>
+                <option value="sensitive">Чувствительная</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="skin_problem">Проблема с кожей</label>
+            <input type="text" id="skin_problem" name="skin_problem" placeholder="Опишите проблему с кожей (если есть)">
+        </div>
+
+        <div>
+            <label for="problem_duration">Длительность проблемы</label>
+            <input type="text" id="problem_duration" name="problem_duration" placeholder="Как долго у вас эта проблема?">
+        </div>
+
+        <input type="submit" value="Отправить">
+    </form>
+</div>
+
+</body>
+</html>

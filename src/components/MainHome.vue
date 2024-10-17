@@ -1,170 +1,26 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Продукты GIGI</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #2e0c0c;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        nav {
-            background-color: #2e0c0c;
-            padding: 15px;
-            text-align: center;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #391818;
-            cursor: pointer;
-        }
-
-        .container {
-            display: flex;
-            max-width: 1200px;
-            margin: 20px auto;
-        }
-
-        .sidebar {
-            width: 20%;
-            padding: 20px;
-            background-color: #fff;
-            border-right: 1px solid #ddd;
-        }
-
-        .sidebar a {
-            display: block;
-            margin: 10px 0;
-            color: #333;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .products {
-            width: 80%;
-            padding: 20px;
-            background-color: #fff;
-        }
-
-        .product-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .product-item {
-            width: calc(25% - 20px);
-            border: 1px solid #ddd;
-            padding: 10px;
-            background-color: #fff;
-            text-align: center;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .product-item img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .product-name {
-            font-weight: bold;
-            margin: 10px 0;
-        }
-
-        .product-price {
-            color: #d42f2f;
-            font-size: 16px;
-        }
-
-        .product-discount {
-            text-decoration: line-through;
-            color: #999;
-            font-size: 12px;
-        }
-
-        .form-button {
-            display: block;
-            margin: 20px auto;
-            padding: 15px;
-            background-color: #391818;
-            color: white;
-            text-align: center;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-        }
-
-        .form-button a {
-            color: white;
-            text-decoration: none;
-        }
-    </style>
-</head>
-
-<body>
-
-    <header>
-        <h1>GIGI Cosmetic Labs</h1>              
-    </header>
-
-    <nav>
-        <a href="#" onclick="showCategory('creams')">Кремы</a>
-        <a href="#" onclick="showCategory('lotions')">Лосьоны</a>
-        <a href="#" onclick="showCategory('masks')">Маски</a>
-        <a href="#" onclick="showCategory('ochistca')">Очищение и снятие макияжа</a>
-        <a href="#" onclick="showCategory('s')">Сыворотки</a>
-    </nav>
-
-    <div class="container">
-        <aside class="sidebar">
-            <h3>Категории</h3>
-            <a href="#" onclick="showCategory('creams')">Кремы</a>
-            <a href="#" onclick="showCategory('lotions')">Лосьоны</a>
-            <a href="#" onclick="showCategory('masks')">Маски</a>
-            <a href="#" onclick="showCategory('ochistca')">Очищение</a>
-            <a href="#" onclick="showCategory('s')">Сыворотки</a>
-        </aside>
-
-        <section class="products" id="products">
-            <h2>Добро пожаловать в наш уходовый магазин GIGI cosmetics lab</h3>
-            <h3>Лаборатории красоты GIGI - эксклюзивные методы омоложения в сочетании с современным оборудованием,
-                инновационными препаратами и высококлассными специалистами.Мы предлагаем Вам лучшее из достижений современной косметологии</h5>
-            <div class="product-grid" id="product-grid">
-
-       <!-- Картинка снизу главного экрана -->
-<div style="text-align: center; margin: 20px 0;">
-    <img src="https://gigi.kz/imagine/slider/acnon.png" alt="Acnon Gigi" style="max-width: 100%; height: auto;">
-</div>
-
-                <!-- Продукты будут динамически добавляться сюда -->
-                  </div>
-        </section>
+<template>
+  <div>
+    <h2>Категория: {{ categoryTitle }}</h2>
+    <div id="product-grid" class="product-grid">
+      <div v-for="product in categoryProducts" :key="product.name" class="product-item">
+        <img :src="product.image" :alt="product.name" />
+        <div class="product-name">{{ product.name }}</div>
+        <div class="product-price">{{ product.price }}</div>
+        <div class="product-discount">{{ product.discount }}</div>
+      </div>
     </div>
+  </div>
+</template>
 
-    <!-- Кнопка формы -->
-    <button class="form-button"><a href="form.html">Заполнить форму</a></button>
-
-    <script>
-        const products = {
-            creams: [
-            {
+<script>
+export default {
+  name: 'MainHome',  
+  data() {
+    return {
+      categoryTitle: 'Creams', // Default category
+      products: {
+        creams: [
+                {
                     name: ' Texture DDM Dynamic Day Make-Up, Динамический дневной тональный крем 30 SPF, 50мл',
                     image: 'https://www.gigi.ru/upload/resize_cache/iblock/e5a/500_500_1/gqjz6r9c03dr1z9bfe5te674luq5n18z.jpg',
                     price: '27 999тг.',
@@ -255,8 +111,10 @@
                     discount: '18 999тг.'
                 },
             ],
+        },
             lotions: [
-            {
+                
+                {
                     name: 'Антисептический заживляющий гель GIGI Acnon Spot Gel, 5 гр.',
                     image: 'https://www.gigi.ru/upload/resize_cache/iblock/809/500_500_1/qpv0t8z1o86m93vcpz5822g2fobixuw3.jpg',
                     price: '15 500тг.',
@@ -376,29 +234,38 @@
                     price: '73 999тг.',
                     discount: '75 999тг.'
                 },
-            ]
-            // Добавьте сюда другие категории продуктов
-        };
+              ],
 
-        function showCategory(category) {
-            const productGrid = document.getElementById('product-grid');
-            productGrid.innerHTML = ''; // Очищаем предыдущие продукты
+        // Add more categories and products here...
+              
+      categoryProducts: []
+    };
+  },
+  mounted() {
+    this.showCategory(this.categoryTitle);
+  },
+  methods: {
+    showCategory(category) {
+      this.categoryProducts = this.products[category];
+    }
+  }
+};
+</script>
 
-            const selectedProducts = products[category];
-            selectedProducts.forEach(product => {
-                const productItem = document.createElement('div');
-                productItem.classList.add('product-item');
+<style scoped>
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-                productItem.innerHTML = `
-                    <img src="${product.image}" alt="${product.name}">
-                    <h3 class="product-name">${product.name}</h3>
-                    <p class="product-price">${product.price}</p>
-                    <p class="product-discount">${product.discount}</p>
-                `;
+.product-item {
+  margin: 10px;
+  width: 200px;
+}
 
-                productGrid.appendChild(productItem);
-            });
-        }
-    </script>
-</body>
-</html>
+.product-name,
+.product-price,
+.product-discount {
+  text-align: center;
+}
+</style>
