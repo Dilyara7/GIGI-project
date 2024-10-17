@@ -23,7 +23,7 @@
             placeholder="Введите ваш возраст"
             required
           />
-        </div>
+      </div>
   
         <div class="form-group">
           <label for="skin_type">Тип кожи:</label>
