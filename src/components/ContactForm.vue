@@ -14,7 +14,7 @@
           />
         </div>
   
-        <div class="form-group">
+        <div class="form-group"></div>
           <label for="age">Возраст:</label>
           <input
             type="number"
